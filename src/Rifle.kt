@@ -1,8 +1,8 @@
-class Rifle(nombre: String, municion: Int, municionARestar: Int, tipoDeMunicion: String): ArmasDeFuego(nombre, municion, municionARestar, tipoDeMunicion) {
+class Rifle(nombre: String, municion: Int, municionARestar: Int, tipoDeMunicion: String, danio: Int, radio: Radio): ArmasDeFuego(nombre, municion, municionARestar, tipoDeMunicion) {
 
     override var danio: Int = 0
         set(value) {
-            require(value in 1..5)
+            require(value in 5..10) { "Un rifle tiene una potencia entre 5 y 10." }
             field = value
         }
     override var radio: String = ""
@@ -13,7 +13,16 @@ class Rifle(nombre: String, municion: Int, municionARestar: Int, tipoDeMunicion:
         }
 
     override fun disparar() {
-        TODO("Not yet implemented")
+        if (municion >= 2){
+            municion - municionARestar
+            println("Se ha disparado 1 ${this.nombre}, quedan $municion disparos.")
+        }
+        else{
+            recargar()
+            disparar()
+            if(cantidadMunicionExtra < 2){ println("No hay munición suficiente.") }
+
+        }
     }
 
     override fun recargar() {

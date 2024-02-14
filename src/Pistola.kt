@@ -1,13 +1,13 @@
-class Pistola(nombre: String, municion: Int, municionARestar: Int, tipoDeMunicion: String): ArmasDeFuego(nombre, municion, municionARestar, tipoDeMunicion) {
+class Pistola(nombre: String, municion: Int, municionARestar: Int, tipoDeMunicion: String, danio: Int, radio: Radio): ArmasDeFuego(nombre, municion, municionARestar, tipoDeMunicion) {
 
-    override var danio: Int = 0
+    override var danio: Int = danio
         set(value) {
-            require(value in 1..5)
+            require(value in 1..5) { "Una pistola tiene una potencia entre 1 y 5." }
             field = value
         }
     override var radio: String = ""
         set(value) {
-            require(value == "Reducido" || value == "Corto") { "El radio debe ser Reducido, Corto, Intermedio, Amplio o Enorme." }
+            require(value == "Reducido" || value == "Corto") { "El radio debe ser Reducido, Corto." }
             field = value
 
         }
@@ -20,7 +20,7 @@ class Pistola(nombre: String, municion: Int, municionARestar: Int, tipoDeMunicio
         else{
             recargar()
             disparar()
-           //if(cantidadMunicionExtra < 1){ println("No hay munición suficiente.") }
+            if(cantidadMunicionExtra < 1){ println("No hay munición suficiente.") }
 
         }
     }
