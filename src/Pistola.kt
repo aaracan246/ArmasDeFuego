@@ -19,7 +19,7 @@ class Pistola(nombre: String, municion: Int, municionARestar: Int, tipoDeMunicio
         }
         else{
             recargar()
-            disparar()
+           // disparar() <- cae bucle infinito hasta que se acaben las balas
             if(cantidadMunicionExtra < 1){ println("No hay munición suficiente.") }
 
         }

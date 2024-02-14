@@ -4,13 +4,14 @@ import kotlin.random.Random
 enum class Radio {
     REDUCIDO, CORTO, INTERMEDIO, ENORME
 }
-abstract class ArmasDeFuego(protected val nombre: String,
-                            protected val municion: Int,
-                            protected var municionARestar: Int,
-                            protected val tipoDeMunicion: String){
+abstract class ArmasDeFuego(
+    val nombre: String,
+    val municion: Int,
+    var municionARestar: Int,
+    private val tipoDeMunicion: String){
 
 companion object{
-    val cantidadMunicionExtra = Random.nextInt(5, 15)
+    var cantidadMunicionExtra = Random.nextInt(5, 15)
 }
 
     abstract val danio: Int
